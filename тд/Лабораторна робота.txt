@@ -1,0 +1,244 @@
+// Лаба №n1 інвідеальне завдання номер n2 (2.15)
+--------------------------------------------------
+// Лаба 2.15
+
+#include <stdio.h>
+
+int main() {
+   float a, b, s, res;
+   scanf("%f %f", &a, &b);
+   
+   s = a*b;
+   printf("Ploshcha: %.1f\n", s);
+   
+   res = (a*a+b*b) / 2;
+   printf("Diagonal: %.3f\n", res);
+   
+   return 0;
+}
+
+--------------------------------------------------
+// Лаба 3.15
+
+#include <stdio.h>
+
+int main() {
+   float a, b, c, d, e, res;
+   scanf("%f %f %f %f %f", &a, &b, &c, &d, &e);
+   
+   res = a+b+c+d+e;
+   res = res/5;
+   printf("Otvet: %.2f\n", res);
+
+   return 0;
+}
+
+--------------------------------------------------
+// Лаба 4.10
+
+#include <stdio.h>
+
+int main() {
+   int a;
+   scanf("%d", &a);
+   
+   if (a % 3 == 0){	
+    printf("Dilutcia na 3");
+   } else {
+   	printf("Ne dilutcia na 3");
+   }
+   
+   return 0;
+}
+
+--------------------------------------------------
+// Лаба 5.10
+
+#include <stdio.h>
+
+int main() {
+   for(float x=-2; x<=2.1; x += 0.2){
+   	float y;
+   	if(x<0){
+   		y = -x;
+	   } else{
+	   	y = x;
+	   }
+   printf("x = %.1f y = %.1f\n", x, y);
+}
+   return 0;
+}
+
+--------------------------------------------------
+// Лаба 6.10
+
+#include <stdio.h>
+void time(int x);
+
+int main() {
+	int x;
+	scanf("%d", &x);
+	time(x);
+	
+    return 0;
+}
+void time(int x) {
+	float res;
+	if(x<10){
+		res = x * 1.2;
+	} else {
+		res = x * 1;
+	}
+	printf("C vas %.1f grn", res);
+}
+
+--------------------------------------------------
+// Лаба 7.10
+
+#include <stdio.h>
+int main()
+{
+  int b[][5] = {
+    {1, 2, 3, 13, -22},
+    {4, 5, 6, -14, 22},
+    {7, 8, 112, 15, 22},
+    {7, -8, 9, 16, 22},
+    {5, 5, 5, -20, 6}
+  };
+  int min_val = b[0][0];
+  int max_val = b[0][0];
+  
+  int min_val_x = 0;
+  int min_val_y = 0;
+  int max_val_x = 0;
+  int max_val_y = 0;
+  
+  for (int i = 0; i < 5; ++i) {
+    for (int j = 0; j < 5; ++j) {
+      if (b[i][j] < min_val) {
+        min_val = b[i][j];
+        min_val_y = i;
+        min_val_x = j;
+      }
+      if (b[i][j] > max_val) {
+        max_val = b[i][j];
+        max_val_y = i;
+        max_val_x = j;
+      }
+    }
+  }
+  printf("min=%d, y=%d x=%d\n", min_val, min_val_y, min_val_x);
+  printf("max=%d, y=%d x=%d\n", max_val, max_val_y, max_val_x);
+  return 0;
+}
+
+--------------------------------------------------
+// Лаба 8.9
+
+#include <stdio.h>
+
+int main(){
+	
+	char firstname[20];
+	char surname[20];
+	char patronymic[20];
+	puts("Pls name");
+	scanf("%s", firstname);
+	puts("Pls surname");
+	scanf("%s", surname);
+	puts("Pls patronymic");
+	scanf("%s", patronymic);
+	
+	printf("Hello %s %s %s. How are you?", surname, firstname, patronymic);
+  return 0;
+}
+
+--------------------------------------------------
+// Лаба 9.15
+
+#include <stdio.h>
+int main()
+{
+  int b[][5] = {
+    {1, 2, 3, 13, -22},
+    {4, 5, 6, -14, 22},
+    {7, 8, 112, 15, 22},
+    {7, -8, 9, 16, 22},
+    {5, 5, 5, -20, 6}
+  };
+  int min_val = b[0][0];
+  int max_val = b[0][0];
+  
+  int min_val_x = 0;
+  int min_val_y = 0;
+  int max_val_x = 0;
+  int max_val_y = 0;
+  
+  for (int i = 0; i < 5; ++i) {
+    for (int j = 0; j < 5; ++j) {
+      if (b[i][j] < min_val) {
+        min_val = b[i][j];
+        min_val_y = i;
+        min_val_x = j;
+      }
+      if (b[i][j] > max_val) {
+        max_val = b[i][j];
+        max_val_y = i;
+        max_val_x = j;
+      }
+    }
+  }
+  printf("min=%d, y=%d x=%d\n", min_val, min_val_y, min_val_x);
+  printf("max=%d, y=%d x=%d\n", max_val, max_val_y, max_val_x);
+  return 0;
+}
+
+--------------------------------------------------
+// Лаба 10.15
+
+#include <stdio.h>
+
+#define ARRAY_SIZE(A) (sizeof(A)/sizeof(A[0]))
+
+struct Camera {
+  char name[10];
+  char type[10];
+  int price;
+  int digital_zoom;
+  int optical_zoom;
+  bool dzoom; 
+};
+
+int main(){
+  struct Camera cameras[5] = {
+    {"Vinga", "Digital", 20000, 100, 50, true},
+    {"Sony", "Digital", 9000, 0, 35, false},
+    {"Nikon", "Analog", 14000, 0, 25, false},
+    {"Canon", "Analog", 11000, 0, 50, false},
+    {"Fujifilm", "Digital", 18000, 80, 40, true}
+  };
+
+  for (int i=0; i<ARRAY_SIZE(cameras)-1; ++i) {
+    int k = i;
+    for (int j=i+1; j<ARRAY_SIZE(cameras); ++j) {
+      if (cameras[j].price < cameras[k].price){
+        k = j;
+      }
+    }
+    if (i != k) {
+      struct Camera tmp = cameras[i];
+      cameras[i] = cameras[k];
+      cameras[k] = tmp;
+    }
+  }
+
+  for (int i=0; i<ARRAY_SIZE(cameras); ++i){
+    if(cameras[i].dzoom == false){
+    printf("%s %d\n", cameras[i].name, cameras[i].price);
+    }
+  }
+
+  return 0;
+}
+
+--------------------------------------------------

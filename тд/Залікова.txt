@@ -1,0 +1,132 @@
+import sys
+from tkinter import *
+from PIL import Image
+
+win = Tk()
+win.geometry("300x200+900+100")
+win.title("MY project")
+mas_old = []
+
+
+def Btn1():
+    start(1)
+
+
+def Btn2():
+    start(0)
+
+
+def stop():
+    sys.exit()
+
+
+b1 = Button(win, text="Man", font=("Times New Roman", 16), command=Btn1)
+b1.place(x=10, y=100, width=120, height=50)
+b2 = Button(win, text="Woman", font=("Times New Roman", 16), command=Btn2)
+b2.place(x=170, y=100, width=120, height=50)
+b3 = Button(win, text="Stop", font=("Times New Roman", 10), command=stop)
+b3.place(x=270, y=0, width=30, height=30)
+
+
+lbl1 = Label(win, text="\nYou man or woman?", font=("Times New Roman", 15))
+lbl1.pack()
+
+
+def start(a):
+    if a == 1:
+        c = 1
+        mas_old.append(c)
+        rename(mas_old)
+        if len(mas_old) == 4:
+            operation(mas_old)
+
+    elif a == 0:
+        c = 2
+        mas_old.append(c)
+        rename(mas_old)
+        if len(mas_old) == 4:
+            operation(mas_old)
+
+
+def rename(m):
+    if len(m) == 1:
+        lbl1.config(text="\nDo you go to walk or to work?")
+        b1.config(text="Walk")
+        b2.config(text="Work")
+    if len(m) == 2:
+        lbl1.config(text="\nSummer or winter?")
+        b1.config(text="Summer")
+        b2.config(text="Winter")
+    if len(m) == 3:
+        lbl1.config(text="\nIs it sunny outside?")
+        b1.config(text="Yes")
+        b2.config(text="No")
+
+
+def operation(mas):
+    if mas[0] == 1:
+        if mas[1] == 1:
+            if mas[2] == 1:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\001.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\002.png")
+            elif mas[2] == 2:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\003.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\004.png")
+
+        elif mas[1] == 2:
+            if mas[2] == 1:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\005.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\006.png")
+
+            elif mas[2] == 2:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\007.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\008.png")
+
+    elif mas[0] == 2:
+        if mas[1] == 1:
+            if mas[2] == 1:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\009.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\010.png")
+            elif mas[2] == 2:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\011.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\012.png")
+
+        elif mas[1] == 2:
+            if mas[2] == 1:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\013.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\014.png")
+
+            elif mas[2] == 2:
+                if mas[3] == 1:
+                    end_operation("PNG_File\\015.png")
+                elif mas[3] == 2:
+                    end_operation("PNG_File\\016.png")
+
+
+def end_operation(n):
+    new_window = Toplevel(win)
+    new_window.title("Res")
+    im = Image.open(n)
+    (sizeX, sizeY) = im.size
+    canvas = Canvas(new_window, width=sizeX, height=sizeY)
+    canvas.pack()
+    new_obj = PhotoImage(file=n)
+    canvas.create_image(sizeX/2, sizeY/2, image=new_obj)
+    new_window.mainloop()
+
+
+win.mainloop()
